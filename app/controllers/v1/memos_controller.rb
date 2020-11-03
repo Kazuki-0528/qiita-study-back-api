@@ -6,7 +6,7 @@ class V1::MemosController < ApplicationController
 
   def update
     memo = Memo.find(params[:id])
-    if memo.update(blog_params)
+    if memo.update(memo_params)
       render json: memo
     else
       render json: memo.errors
@@ -14,7 +14,7 @@ class V1::MemosController < ApplicationController
   end
 
   def create
-    memo = Memo.new(blog_params)
+    memo = Memo.new(memo_params)
     if memo.save
       render json: memo, status: :created
     else
@@ -30,7 +30,7 @@ class V1::MemosController < ApplicationController
   end
 
   private
-  def blog_params
+  def memo_params
     params.require(:memo).permit(:title, :body)
   end
 end
