@@ -4,15 +4,6 @@ class V1::MemosController < ApplicationController
     render json: memos
   end
 
-  def update
-    memo = Memo.find(params[:id])
-    if memo.update(memo_params)
-      render json: memo
-    else
-      render json: memo.errors
-    end
-  end
-
   def create
     memo = Memo.new(memo_params)
     if memo.save
